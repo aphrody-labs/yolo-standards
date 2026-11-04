@@ -1,0 +1,12 @@
+# Justfile for {{NAME}} (MCP Server)
+default:
+    @just --list
+
+run-stdio:
+    bun run src/index.ts --stdio
+
+run-sse:
+    bun run src/index.ts --sse --port 3000
+
+test:
+    bun test

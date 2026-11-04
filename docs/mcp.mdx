@@ -1,0 +1,27 @@
+# Model Context Protocol (MCP) 2026 Specification
+
+The Model Context Protocol (MCP) defines an open standard for LLMs and AI agent runtimes to interact with external tools, resources, and persistent context safely.
+
+## Core Transports
+
+- **stdio**: Standard IO pipe for local sandboxed agent execution.
+- **sse**: Server-Sent Events over HTTP.
+- **websocket**: Full-duplex bidirectional streaming.
+- **memory**: In-process direct memory channel for zero-copy IPC.
+
+## Capabilities
+
+1. **Tools**: Callable execution primitives with JSON Schema parameter definitions.
+2. **Resources**: Structured and unstructured contextual data access.
+3. **Prompts**: Templated instructions and context prompts.
+4. **Agent-to-Agent**: Inter-subagent delegation and communication interfaces.
+
+## Usage
+
+```typescript
+import { StandardsLoader } from "yolo-standards";
+
+const loader = new StandardsLoader();
+const mcp = await loader.loadMCP2026();
+console.log(`MCP Version: ${mcp.version}, Transports: ${mcp.transports.join(", ")}`);
+```

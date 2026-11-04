@@ -1,0 +1,33 @@
+{
+  "name": "create-yolo-app",
+  "version": "0.1.0",
+  "description": "Blazing-fast zero-HTML/CSS/JS generator for 2026/future YOLO apps (mcp, cli, desktop, web)",
+  "type": "module",
+  "bin": {
+    "create-yolo-app": "./src/cli.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "start": "bun run src/cli.ts",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "keywords": [
+    "yolo",
+    "generator",
+    "zero-html",
+    "zero-css",
+    "zero-js",
+    "pure-ts",
+    "rust",
+    "mcp",
+    "dioxus",
+    "wgpu"
+  ]
+}

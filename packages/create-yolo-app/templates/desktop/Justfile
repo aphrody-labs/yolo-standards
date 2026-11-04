@@ -1,0 +1,15 @@
+# Justfile for {{NAME}} (Desktop App)
+default:
+    @just --list
+
+# Verify syntax and types
+check:
+    cargo check
+
+# Run desktop application
+run:
+    cargo run --release
+
+# Run shader & SDF logic tests
+test:
+    cargo test

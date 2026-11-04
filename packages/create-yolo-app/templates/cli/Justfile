@@ -1,0 +1,16 @@
+# Justfile for {{NAME}} (Native CLI)
+default:
+    @just --list
+
+# Run TypeScript Bun CLI
+run:
+    bun run src/index.ts --help
+
+# Build & Run Rust Native CLI
+run-rs:
+    cargo run -- --help
+
+# Test both Bun CLI and Rust Native CLI
+test:
+    bun test
+    cargo check

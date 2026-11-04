@@ -1,0 +1,19 @@
+{
+  "name": "yolo-standards",
+  "version": "0.1.0",
+  "description": "Zero-HTML/CSS/JS Standards Engine: W3C, Khronos, Wayland, Linux, MDN, TC39, MCP",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "fetch:all": "bun run scripts/fetch-standards.ts",
+    "validate": "bun test",
+    "test": "bun test",
+    "create-yolo-app": "bun run packages/create-yolo-app/src/cli.ts",
+    "build:rs": "cargo check"
+  },
+  "devDependencies": {
+    "@noble/ed25519": "^3.2.0",
+    "@types/bun": "latest"
+  }
+}

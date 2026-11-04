@@ -1,0 +1,19 @@
+{
+  "name": "{{NAME}}",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "{{NAME}}": "./src/index.ts"
+  },
+  "scripts": {
+    "start": "bun run src/index.ts",
+    "build": "cargo check",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}

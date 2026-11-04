@@ -1,0 +1,9 @@
+# Justfile for {{NAME}} (Fullstack Pure TSX Web)
+default:
+    @just --list
+
+dev:
+    bun run src/server.tsx
+
+test:
+    bun test
