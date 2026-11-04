@@ -1,7 +1,7 @@
 {
   "name": "yolo-standards",
   "version": "0.1.0",
-  "description": "Zero-HTML/CSS/JS Standards Engine: W3C, Khronos, Wayland, Linux, MDN, TC39, MCP",
+  "description": "Open standards registry: WebAssembly, MDN, TC39, and MCP",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",

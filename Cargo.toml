@@ -7,7 +7,6 @@ description = "Zero-HTML/CSS/JS standards schemas and validator bindings in Pure
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-quick-xml = { version = "0.37", features = ["serialize"] }
 thiserror = "2.0"
 
 [lib]

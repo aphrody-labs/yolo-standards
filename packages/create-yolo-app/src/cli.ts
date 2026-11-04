@@ -11,13 +11,13 @@ program
   .argument("[name]", "Project name", "my-yolo-app")
   .option(
     "-t, --template <template>",
-    "Template to scaffold: mcp | cli | desktop | web",
+    "Template to scaffold: mcp | cli | web",
     "mcp"
   )
   .option("--theme <preset>", "yolo-ui theme preset", "catppuccin-latte")
   .option("--skip-verify", "Skip yolo-plugins verification manifest generation")
   .action((name: string, options: { template: string; theme: string; skipVerify?: boolean }) => {
-    const validTemplates: TemplateType[] = ["mcp", "cli", "desktop", "web"];
+    const validTemplates: TemplateType[] = ["mcp", "cli", "web"];
     if (!validTemplates.includes(options.template as TemplateType)) {
       console.error(
         `[Error] Invalid template '${options.template}'. Must be one of: ${validTemplates.join(", ")}`
@@ -40,13 +40,8 @@ program
     console.log(`[YOLO create-app] Project '${name}' generated successfully with 0 HTML/CSS/JS files!`);
     console.log(`Next steps:`);
     console.log(`  cd ${name}`);
-    if (options.template === "desktop") {
-      console.log(`  cargo check`);
-      console.log(`  cargo run`);
-    } else {
-      console.log(`  bun install`);
-      console.log(`  bun test`);
-    }
+    console.log(`  bun install`);
+    console.log(`  bun test`);
   });
 
 if (import.meta.main) {

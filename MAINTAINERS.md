@@ -48,13 +48,11 @@ F: packages/marketplace-server/
 F: packages/yolo-universal-mcp/
 F: plugins/
 
-YOLO STANDARDS & HARDWARE SCHEMAS (`yolo-standards`)
-M: YOLO Standards & POSIX Team <standards@yolo-rs.org>
+YOLO LANGUAGE & WEB STANDARDS (`yolo-standards`)
+M: YOLO Standards Team <standards@yolo-rs.org>
 S: Supported
 F: schemas/
 F: packages/create-yolo-app/
-F: packages/yolo-hardware-db/
-F: packages/yolo-posix-bun/
 
 YOLO UPSTREAM VENDOR MIRRORS (`yolo-vendor`)
 M: YOLO Toolchain & Vendor Team <vendor@yolo-rs.org>

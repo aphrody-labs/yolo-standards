@@ -1,20 +1,7 @@
 import { join } from "path";
-import type {
-  WebGPUSchema,
-  WebAssemblySchema,
-  KhronosRegistrySchema,
-  WaylandProtocolSchema,
-  LinuxKernelSchema,
-  MDNCompatSchema,
-  TC39ProposalsSchema,
-  MCPSchema2026
-} from "./types.ts";
+import type { WebAssemblySchema, MDNCompatSchema, TC39ProposalsSchema, MCPSchema2026 } from "./types.ts";
 import {
-  validateWebGPU,
   validateWebAssembly,
-  validateKhronos,
-  validateWayland,
-  validateLinux,
   validateMDNCompat,
   validateTC39,
   validateMCP2026
@@ -48,33 +35,9 @@ export class StandardsLoader {
     throw new Error(`Standard not found: category=${category}, name=${filename}`);
   }
 
-  async loadWebGPU(): Promise<WebGPUSchema> {
-    const data = await this.loadJson("webgpu", "webgpu");
-    if (!validateWebGPU(data)) throw new Error("Invalid WebGPU schema format");
-    return data;
-  }
-
   async loadWebAssembly(): Promise<WebAssemblySchema> {
     const data = await this.loadJson("webassembly", "webassembly");
     if (!validateWebAssembly(data)) throw new Error("Invalid WebAssembly schema format");
-    return data;
-  }
-
-  async loadVulkan(): Promise<KhronosRegistrySchema> {
-    const data = await this.loadJson("khronos", "vulkan");
-    if (!validateKhronos(data)) throw new Error("Invalid Khronos Vulkan schema format");
-    return data;
-  }
-
-  async loadWayland(): Promise<WaylandProtocolSchema> {
-    const data = await this.loadJson("wayland", "wayland");
-    if (!validateWayland(data)) throw new Error("Invalid Wayland schema format");
-    return data;
-  }
-
-  async loadLinux(): Promise<LinuxKernelSchema> {
-    const data = await this.loadJson("linux", "linux");
-    if (!validateLinux(data)) throw new Error("Invalid Linux kernel schema format");
     return data;
   }
 

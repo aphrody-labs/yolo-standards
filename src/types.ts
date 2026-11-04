@@ -1,20 +1,3 @@
-export interface WebGPUSchema {
-  version: string;
-  specUrl: string;
-  features: string[];
-  limits: Record<string, number>;
-  interfaces: Array<{
-    name: string;
-    kind: "interface" | "dictionary" | "enum" | "typedef";
-    members?: Array<{
-      name: string;
-      type: string;
-      optional?: boolean;
-      readonly?: boolean;
-    }>;
-  }>;
-}
-
 export interface WebAssemblySchema {
   version: string;
   coreSpecUrl: string;
@@ -27,67 +10,6 @@ export interface WebAssemblySchema {
     description: string;
   }>;
   canonicalAbis?: string[];
-}
-
-export interface KhronosRegistrySchema {
-  api: "vulkan" | "opengl" | "opengles";
-  version: string;
-  types: Array<{
-    name: string;
-    category: string;
-  }>;
-  enums: Array<{
-    name: string;
-    value: string | number;
-  }>;
-  commands: Array<{
-    name: string;
-    returnType: string;
-    params: Array<{
-      name: string;
-      type: string;
-    }>;
-  }>;
-}
-
-export interface WaylandProtocolSchema {
-  protocol: string;
-  interfaces: Array<{
-    name: string;
-    version: number;
-    description?: string;
-    requests?: Array<{
-      name: string;
-      args?: Array<{
-        name: string;
-        type: string;
-        interface?: string;
-      }>;
-    }>;
-    events?: Array<{
-      name: string;
-      args?: Array<{
-        name: string;
-        type: string;
-      }>;
-    }>;
-  }>;
-}
-
-export interface LinuxKernelSchema {
-  kernelVersion: string;
-  cgroupsV2: {
-    controllers: string[];
-    coreFiles: string[];
-  };
-  sysfs: {
-    subsystems: string[];
-  };
-  ebpf: {
-    programTypes: string[];
-    mapTypes: string[];
-    attachTypes: string[];
-  };
 }
 
 export interface MDNCompatSchema {

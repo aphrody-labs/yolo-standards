@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import { generateProject, type TemplateType } from "../src/generator.ts";
 
 describe("create-yolo-app package tests", () => {
-  const templates: TemplateType[] = ["mcp", "cli", "desktop", "web"];
+  const templates: TemplateType[] = ["mcp", "cli", "web"];
 
   for (const template of templates) {
     test(`template '${template}' generates files correctly`, () => {
