@@ -10,9 +10,10 @@
   "types": "./src/index.ts",
   "scripts": {
     "start": "bun run src/cli.ts",
-    "test": "bun test"
+    "test": "bun test tests/"
   },
   "dependencies": {
+    "@noble/ed25519": "^3.2.0",
     "commander": "^13.1.0"
   },
   "devDependencies": {

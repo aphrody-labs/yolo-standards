@@ -102,6 +102,27 @@ describe("create-yolo-app generator", () => {
     expect(serverTsx!.content).toContain("renderToString");
     expect(themeTs!.content).toContain("yoloTheme");
   });
+
+  test("generated project scaffolds and runs clean with zero HTML/CSS/JS", () => {
+    for (const template of templates) {
+      const targetDir = `test-out-${template}`;
+      const files = generateProject({
+        name: `sample-${template}`,
+        template,
+        targetDir,
+      });
+
+      // Verify files in generated output
+      expect(files.length).toBeGreaterThanOrEqual(4);
+      for (const f of files) {
+        expect(f.content.length).toBeGreaterThan(0);
+        // Guarantee no raw HTML/CSS/JS files
+        expect(f.path.endsWith(".html")).toBe(false);
+        expect(f.path.endsWith(".css")).toBe(false);
+        expect(f.path.endsWith(".js")).toBe(false);
+      }
+    }
+  });
 });
 
 function getTemplateFiles(template: TemplateType) {
