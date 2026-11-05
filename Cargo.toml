@@ -16,3 +16,10 @@ path = "src/lib.rs"
 [workspace]
 members = ["crates/yolo-posix"]
 resolver = "3"
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+opt-level = 3
+strip = "symbols"
