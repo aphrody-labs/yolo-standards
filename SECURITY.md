@@ -1,7 +1,7 @@
 # Security Policy
 
 The YOLO project and its maintainers take security and vulnerability disclosure seriously.
-YOLO encompasses multi-engine UI frameworks, bleeding-edge web automation runtimes, reverse-engineering engines, distributed signed plugin systems, and foundational hardware/POSIX schemas.
+YOLO Standards focuses on open protocol and language schemas, with project scaffolding tools for the wider YOLO ecosystem.
 
 ## Supported Versions
 
@@ -9,7 +9,7 @@ Security fixes and patches are targeted strictly at active branches:
 
 | Version / Branch | Supported          | Runtime Baseline |
 | ---------------- | ------------------ | ---------------- |
-| `main`           | :white_check_mark: | Bun v1.4.4+ / Rust 2024 / WGPU 30 |
+| `main`           | :white_check_mark: | Bun v1.4.4+ / Rust 2024 |
 | `< 1.0.0`        | :x:                | Deprecated       |
 
 ## Reporting a Vulnerability

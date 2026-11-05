@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-export type TemplateType = "mcp" | "cli" | "desktop" | "web";
+export type TemplateType = "mcp" | "cli" | "web";
 
 export interface CreateAppOptions {
   name: string;
@@ -37,7 +37,7 @@ function scanDirRecursive(baseDir: string, currentDir = baseDir): string[] {
 
 export function generateProject(options: CreateAppOptions): GeneratedFile[] {
   const { name, template } = options;
-  const validTemplates: TemplateType[] = ["mcp", "cli", "desktop", "web"];
+  const validTemplates: TemplateType[] = ["mcp", "cli", "web"];
   if (!validTemplates.includes(template)) {
     throw new Error("Unsupported template: " + template);
   }
@@ -77,7 +77,7 @@ export function generateProject(options: CreateAppOptions): GeneratedFile[] {
           ecosystem: {
             yoloUi: {
               themePreset: options.yoloUiTheme ?? "catppuccin-latte",
-              renderer: template === "desktop" ? "wgpu-analytical-sdf" : "bun-tsx",
+              renderer: "bun-tsx",
             },
             yoloPlugins: {
               verified: true,

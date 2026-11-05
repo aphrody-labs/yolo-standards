@@ -4,19 +4,8 @@ use serde::{Deserialize, Serialize};
 pub enum StandardError {
     #[error("Serialization / Deserialization error: {0}")]
     Json(#[from] serde_json::Error),
-    #[error("XML parsing error: {0}")]
-    Xml(#[from] quick_xml::Error),
     #[error("Schema validation failed: {0}")]
     Validation(String),
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct WebGpuSpec {
-    pub version: String,
-    #[serde(rename = "specUrl")]
-    pub spec_url: String,
-    pub features: Vec<String>,
-    pub limits: std::collections::HashMap<String, u64>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -68,12 +57,6 @@ pub struct McpSpec2026 {
     pub protocol_version: String,
     pub transports: Vec<String>,
     pub capabilities: McpCapabilities,
-}
-
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct LinuxKernelSpec {
-    #[serde(rename = "kernelVersion")]
-    pub kernel_version: String,
 }
 
 pub fn parse_mcp_spec(json_str: &str) -> Result<McpSpec2026, StandardError> {

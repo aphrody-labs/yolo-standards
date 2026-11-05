@@ -1,7 +1,7 @@
 {
   "name": "create-yolo-app",
   "version": "0.1.0",
-  "description": "Blazing-fast zero-HTML/CSS/JS generator for 2026/future YOLO apps (mcp, cli, desktop, web)",
+  "description": "Blazing-fast zero-HTML/CSS/JS generator for 2026/future YOLO apps (mcp, cli, web)",
   "type": "module",
   "bin": {
     "create-yolo-app": "./src/cli.ts"
@@ -28,7 +28,6 @@
     "pure-ts",
     "rust",
     "mcp",
-    "dioxus",
-    "wgpu"
+    "bun"
   ]
 }

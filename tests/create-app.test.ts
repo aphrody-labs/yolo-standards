@@ -2,7 +2,7 @@ import { describe, expect, test } from "bun:test";
 import { generateProject, type TemplateType } from "../packages/create-yolo-app/src/generator.ts";
 
 describe("create-yolo-app generator", () => {
-  const templates: TemplateType[] = ["mcp", "cli", "desktop", "web"];
+  const templates: TemplateType[] = ["mcp", "cli", "web"];
 
   for (const template of templates) {
     test(`template '${template}' generates files without raw HTML, CSS, or JS`, () => {
@@ -70,22 +70,6 @@ describe("create-yolo-app generator", () => {
     expect(mainRs!.content).toContain("Parser");
     expect(indexTs!.content).toContain("bun");
     expect(justfile!.content).toContain("cargo check");
-  });
-
-  test("desktop template contains Dioxus 0.8 / WGPU analytical SDF engine", () => {
-    const files = getTemplateFiles("desktop");
-    const mainRs = files.find((f) => f.path === "src/main.rs");
-    const sdfRs = files.find((f) => f.path === "src/sdf_renderer.rs");
-    const cargoToml = files.find((f) => f.path === "Cargo.toml");
-
-    expect(mainRs).toBeDefined();
-    expect(sdfRs).toBeDefined();
-    expect(cargoToml).toBeDefined();
-
-    expect(cargoToml!.content).toContain("dioxus");
-    expect(cargoToml!.content).toContain("wgpu");
-    expect(sdfRs!.content).toContain("SdfScene");
-    expect(sdfRs!.content).toContain("distance_at");
   });
 
   test("web template contains Pure TSX, Bun.serve routes and Tailwind compiler theme", () => {

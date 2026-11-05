@@ -14,39 +14,11 @@ const SCHEMAS_DIR = join(ROOT_DIR, "schemas");
 
 export const STANDARD_ENDPOINTS: StandardEndpoint[] = [
   {
-    id: "webgpu",
-    name: "W3C WebGPU Specification",
-    url: "https://raw.githubusercontent.com/gpuweb/gpuweb/main/spec/index.bs",
-    fallbackFile: join(SCHEMAS_DIR, "webgpu", "webgpu.default.json"),
-    targetFile: join(SCHEMAS_DIR, "webgpu", "webgpu.current.json")
-  },
-  {
     id: "webassembly",
     name: "WebAssembly Core Specification",
     url: "https://raw.githubusercontent.com/WebAssembly/spec/main/interpreter/README.md",
     fallbackFile: join(SCHEMAS_DIR, "webassembly", "webassembly.default.json"),
     targetFile: join(SCHEMAS_DIR, "webassembly", "webassembly.current.json")
-  },
-  {
-    id: "khronos-vulkan",
-    name: "Khronos Vulkan XML Registry",
-    url: "https://raw.githubusercontent.com/KhronosGroup/Vulkan-Docs/main/xml/vk.xml",
-    fallbackFile: join(SCHEMAS_DIR, "khronos", "vulkan.default.json"),
-    targetFile: join(SCHEMAS_DIR, "khronos", "vulkan.current.json")
-  },
-  {
-    id: "wayland",
-    name: "Wayland Core Protocol XML",
-    url: "https://gitlab.freedesktop.org/wayland/wayland/-/raw/main/protocol/wayland.xml",
-    fallbackFile: join(SCHEMAS_DIR, "wayland", "wayland.default.json"),
-    targetFile: join(SCHEMAS_DIR, "wayland", "wayland.current.json")
-  },
-  {
-    id: "linux",
-    name: "Linux Kernel cgroups & eBPF Definitions",
-    url: "https://raw.githubusercontent.com/torvalds/linux/master/include/uapi/linux/bpf.h",
-    fallbackFile: join(SCHEMAS_DIR, "linux", "linux.default.json"),
-    targetFile: join(SCHEMAS_DIR, "linux", "linux.current.json")
   },
   {
     id: "mdn",
