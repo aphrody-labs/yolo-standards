@@ -11,6 +11,8 @@ Tracking **WebAssembly, ECMAScript (TC39), MDN browser compatibility, and Model 
 ```text
 yolo-standards/
 ├── Cargo.toml                  # Rust library crate (Pure Rust standards structures)
+├── crates/
+│   └── yolo-posix/             # Rust POSIX.1-2024 and GNU compatibility crate
 ├── package.json                # Bun workspace root & scripts
 ├── bunfig.toml                 # Native Bun configuration
 ├── tsconfig.json               # TypeScript configuration
@@ -22,6 +24,11 @@ yolo-standards/
 ├── src/                        # Core TypeScript schemas, loaders & validators
 └── tests/                      # Conformance & validation test suite
 ```
+
+The Rust workspace includes `crates/yolo-posix`, a dual-licensed POSIX.1-2024
+and GNU compatibility crate for Unix and Windows. The crate and its
+specification document are maintained here; yolo-cross consumes compiler and
+target tooling only and does not carry a second copy.
 
 ---
 

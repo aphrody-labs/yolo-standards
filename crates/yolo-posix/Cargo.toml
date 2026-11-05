@@ -1,0 +1,21 @@
+[package]
+name = "yolo-posix"
+version = "0.1.0"
+edition = "2024"
+description = "POSIX.1-2024 & GNU compatibility layer for Rust across Unix and Windows"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Storage_FileSystem",
+    "Win32_System_Console",
+    "Win32_System_IO",
+    "Win32_System_Threading",
+    "Win32_System_SystemServices",
+] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
