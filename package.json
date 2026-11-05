@@ -10,7 +10,7 @@
     "validate": "bun test",
     "test": "bun test",
     "create-yolo-app": "bun run packages/create-yolo-app/src/cli.ts",
-    "build:rs": "cargo check"
+    "build:rs": "cargo check --workspace"
   },
   "devDependencies": {
     "@noble/ed25519": "^3.2.0",

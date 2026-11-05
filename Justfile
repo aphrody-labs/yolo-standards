@@ -11,7 +11,7 @@ fetch:
 # Validate all schemas and run test suites
 test:
     bun test
-    cargo check
+    cargo check --workspace
 
 # Run TypeScript schema validation tests
 validate:
@@ -21,4 +21,4 @@ validate:
 update:
     bun run scripts/fetch-standards.ts
     bun test
-    cargo check
+    cargo check --workspace

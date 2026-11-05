@@ -53,6 +53,8 @@ M: YOLO Standards Team <standards@yolo-rs.org>
 S: Supported
 F: schemas/
 F: packages/create-yolo-app/
+F: crates/yolo-posix/
+F: docs/posix-gnu.mdx
 
 YOLO UPSTREAM VENDOR MIRRORS (`yolo-vendor`)
 M: YOLO Toolchain & Vendor Team <vendor@yolo-rs.org>
