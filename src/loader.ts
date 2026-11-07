@@ -1,10 +1,17 @@
 import { join } from "path";
-import type { WebAssemblySchema, MDNCompatSchema, TC39ProposalsSchema, MCPSchema2026 } from "./types.ts";
+import type {
+  WebAssemblySchema,
+  MDNCompatSchema,
+  TC39ProposalsSchema,
+  MCPSchema2026,
+  GoogleStyleguide2026Schema
+} from "./types.ts";
 import {
   validateWebAssembly,
   validateMDNCompat,
   validateTC39,
-  validateMCP2026
+  validateMCP2026,
+  validateGoogleStyleguide2026
 } from "./validators.ts";
 
 export class StandardsLoader {
@@ -56,6 +63,12 @@ export class StandardsLoader {
   async loadMCP2026(): Promise<MCPSchema2026> {
     const data = await this.loadJson("mcp", "mcp-2026");
     if (!validateMCP2026(data)) throw new Error("Invalid MCP 2026 schema format");
+    return data;
+  }
+
+  async loadGoogleStyleguide2026(): Promise<GoogleStyleguide2026Schema> {
+    const data = await this.loadJson("google-styleguide", "google-styleguide-2026");
+    if (!validateGoogleStyleguide2026(data)) throw new Error("Invalid Google Styleguide 2026 schema format");
     return data;
   }
 }

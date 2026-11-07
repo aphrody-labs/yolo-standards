@@ -63,3 +63,60 @@ export interface MCPSchema2026 {
     resultSchema?: Record<string, any>;
   }>;
 }
+
+export interface GoogleStyleguide2026Schema {
+  version: string;
+  upstreams: {
+    googleStyleguide: string;
+    googleSkills: string;
+    openSourceGoogle: string;
+    comprehensiveRust: string;
+    deepMind: string;
+    chromium: string;
+    aosp: string;
+  };
+  rust: {
+    edition: "2024";
+    comprehensiveRustUrl: string;
+    chromiumFfiSafety: {
+      requireCxxOrCrubit: boolean;
+      prohibitCatchUnwind: boolean;
+      panicStrategy: "abort";
+      forbidUncheckedUnsafe: boolean;
+      gtestInterop: string;
+    };
+    linter: "clippy";
+    formatter: "rustfmt";
+    rules: string[];
+  };
+  typescript: {
+    styleguideUrl: string;
+    runtime: "bun";
+    minBunVersion: string;
+    commands: {
+      format: "bun fmt";
+      lint: "bun lint --type-aware";
+      check: "bun check";
+    };
+    rules: string[];
+  };
+  cppChromium: {
+    styleguideUrl: string;
+    stdVersion: string;
+    subsystems: string[];
+    buildTools: Array<"gn" | "ninja" | "depot_tools" | "gclient" | "repo" | string>;
+    rules: string[];
+  };
+  aospAndroid17: {
+    apiLevel: number;
+    releaseName: string;
+    buildSystems: Array<"soong" | "bazel" | "repo" | string>;
+    virtualDevice: {
+      runtime: "cuttlefish";
+      architecture: "x86_64";
+      imageFlavor: string;
+      launchCommand: string;
+    };
+    rules: string[];
+  };
+}

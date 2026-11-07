@@ -1,4 +1,10 @@
-import type { WebAssemblySchema, MDNCompatSchema, TC39ProposalsSchema, MCPSchema2026 } from "./types.ts";
+import type {
+  WebAssemblySchema,
+  MDNCompatSchema,
+  TC39ProposalsSchema,
+  MCPSchema2026,
+  GoogleStyleguide2026Schema
+} from "./types.ts";
 
 export function validateWebAssembly(data: any): data is WebAssemblySchema {
   if (!data || typeof data !== "object") return false;
@@ -30,4 +36,37 @@ export function validateMCP2026(data: any): data is MCPSchema2026 {
     typeof data.capabilities === "object" &&
     Array.isArray(data.methods)
   );
+}
+
+export function validateGoogleStyleguide2026(data: any): data is GoogleStyleguide2026Schema {
+  if (!data || typeof data !== "object") return false;
+  const rustOk =
+    data.rust &&
+    data.rust.edition === "2024" &&
+    data.rust.linter === "clippy" &&
+    data.rust.formatter === "rustfmt" &&
+    data.rust.chromiumFfiSafety?.prohibitCatchUnwind === true &&
+    data.rust.chromiumFfiSafety?.panicStrategy === "abort" &&
+    Array.isArray(data.rust.rules);
+  const tsOk =
+    data.typescript &&
+    data.typescript.runtime === "bun" &&
+    typeof data.typescript.minBunVersion === "string" &&
+    data.typescript.commands?.format === "bun fmt" &&
+    data.typescript.commands?.lint === "bun lint --type-aware" &&
+    data.typescript.commands?.check === "bun check" &&
+    Array.isArray(data.typescript.rules);
+  const cppOk =
+    data.cppChromium &&
+    Array.isArray(data.cppChromium.buildTools) &&
+    ["gn", "ninja", "depot_tools", "gclient", "repo"].every((t) => data.cppChromium.buildTools.includes(t)) &&
+    Array.isArray(data.cppChromium.subsystems);
+  const aospOk =
+    data.aospAndroid17 &&
+    typeof data.aospAndroid17.apiLevel === "number" &&
+    Array.isArray(data.aospAndroid17.buildSystems) &&
+    ["soong", "bazel", "repo"].every((b) => data.aospAndroid17.buildSystems.includes(b)) &&
+    data.aospAndroid17.virtualDevice?.runtime === "cuttlefish" &&
+    data.aospAndroid17.virtualDevice?.architecture === "x86_64";
+  return Boolean(typeof data.version === "string" && data.upstreams && rustOk && tsOk && cppOk && aospOk);
 }

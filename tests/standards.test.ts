@@ -1,6 +1,12 @@
 import { describe, expect, it } from "bun:test";
 import { StandardsLoader } from "../src/loader.ts";
-import { validateWebAssembly, validateMDNCompat, validateTC39, validateMCP2026 } from "../src/validators.ts";
+import {
+  validateWebAssembly,
+  validateMDNCompat,
+  validateTC39,
+  validateMCP2026,
+  validateGoogleStyleguide2026
+} from "../src/validators.ts";
 
 describe("yolo-standards loader and validators suite", () => {
   const loader = new StandardsLoader();
@@ -36,5 +42,23 @@ describe("yolo-standards loader and validators suite", () => {
     expect(mcp.transports).toContain("stdio");
     expect(mcp.transports).toContain("websocket");
     expect(mcp.capabilities.server.tools).toBe(true);
+  });
+
+  it("should load and validate Google / DeepMind / Chromium / AOSP Styleguide & Build Tooling 2026", async () => {
+    const gs = await loader.loadGoogleStyleguide2026();
+    expect(gs).toBeDefined();
+    expect(validateGoogleStyleguide2026(gs)).toBe(true);
+    expect(gs.rust.edition).toBe("2024");
+    expect(gs.rust.linter).toBe("clippy");
+    expect(gs.rust.formatter).toBe("rustfmt");
+    expect(gs.rust.chromiumFfiSafety.prohibitCatchUnwind).toBe(true);
+    expect(gs.typescript.runtime).toBe("bun");
+    expect(gs.typescript.commands.format).toBe("bun fmt");
+    expect(gs.typescript.commands.lint).toBe("bun lint --type-aware");
+    expect(gs.typescript.commands.check).toBe("bun check");
+    expect(gs.cppChromium.buildTools).toEqual(["gn", "ninja", "depot_tools", "gclient", "repo"]);
+    expect(gs.aospAndroid17.buildSystems).toEqual(["soong", "bazel", "repo"]);
+    expect(gs.aospAndroid17.virtualDevice.runtime).toBe("cuttlefish");
+    expect(gs.aospAndroid17.virtualDevice.architecture).toBe("x86_64");
   });
 });

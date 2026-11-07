@@ -40,6 +40,13 @@ export const STANDARD_ENDPOINTS: StandardEndpoint[] = [
     url: "https://raw.githubusercontent.com/modelcontextprotocol/specification/main/schema/schema.json",
     fallbackFile: join(SCHEMAS_DIR, "mcp", "mcp-2026.default.json"),
     targetFile: join(SCHEMAS_DIR, "mcp", "mcp-2026.current.json")
+  },
+  {
+    id: "google-styleguide",
+    name: "Google / DeepMind / Chromium / AOSP Styleguide & Build Tooling 2026",
+    url: "https://raw.githubusercontent.com/google/styleguide/gh-pages/rustguide.md",
+    fallbackFile: join(SCHEMAS_DIR, "google-styleguide", "google-styleguide-2026.default.json"),
+    targetFile: join(SCHEMAS_DIR, "google-styleguide", "google-styleguide-2026.current.json")
   }
 ];
 
