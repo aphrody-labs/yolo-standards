@@ -3,7 +3,8 @@ import type {
   MDNCompatSchema,
   TC39ProposalsSchema,
   MCPSchema2026,
-  GoogleStyleguide2026Schema
+  GoogleStyleguide2026Schema,
+  GoogleChromeReposSchema
 } from "./types.ts";
 
 export function validateWebAssembly(data: any): data is WebAssemblySchema {
@@ -70,3 +71,33 @@ export function validateGoogleStyleguide2026(data: any): data is GoogleStyleguid
     data.aospAndroid17.virtualDevice?.architecture === "x86_64";
   return Boolean(typeof data.version === "string" && data.upstreams && rustOk && tsOk && cppOk && aospOk);
 }
+
+export function validateGoogleChromeRepos(data: any): data is GoogleChromeReposSchema {
+  if (!data || typeof data !== "object") return false;
+  const reposOk =
+    Array.isArray(data.repositories) &&
+    data.repositories.length >= 5 &&
+    data.repositories.every(
+      (r: any) =>
+        typeof r.name === "string" &&
+        typeof r.repoUrl === "string" &&
+        typeof r.rankByStars === "number" &&
+        Array.isArray(r.standards)
+    );
+  const align = data.standardsAlignment;
+  const alignOk =
+    align &&
+    Array.isArray(align.coreWebVitals) &&
+    Array.isArray(align.pwaServiceWorker) &&
+    Array.isArray(align.automationCDP) &&
+    Array.isArray(align.renderingCSS) &&
+    Array.isArray(align.securityIdentity);
+
+  return Boolean(
+    typeof data.version === "string" &&
+    data.organization === "GoogleChrome" &&
+    reposOk &&
+    alignOk
+  );
+}
+

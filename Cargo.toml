@@ -14,7 +14,7 @@ name = "yolo_standards"
 path = "src/lib.rs"
 
 [workspace]
-members = ["crates/yolo-posix"]
+members = ["crates/yolo-posix", "crates/yolo-coreutils-wasm"]
 resolver = "3"
 
 [profile.release]

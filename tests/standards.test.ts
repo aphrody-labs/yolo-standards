@@ -5,7 +5,8 @@ import {
   validateMDNCompat,
   validateTC39,
   validateMCP2026,
-  validateGoogleStyleguide2026
+  validateGoogleStyleguide2026,
+  validateGoogleChromeRepos
 } from "../src/validators.ts";
 
 describe("yolo-standards loader and validators suite", () => {
@@ -60,5 +61,20 @@ describe("yolo-standards loader and validators suite", () => {
     expect(gs.aospAndroid17.buildSystems).toEqual(["soong", "bazel", "repo"]);
     expect(gs.aospAndroid17.virtualDevice.runtime).toBe("cuttlefish");
     expect(gs.aospAndroid17.virtualDevice.architecture).toBe("x86_64");
+  });
+
+  it("should load and validate GoogleChrome top repositories alignment by stars", async () => {
+    const gc = await loader.loadGoogleChromeRepos();
+    expect(gc).toBeDefined();
+    expect(validateGoogleChromeRepos(gc)).toBe(true);
+    expect(gc.organization).toBe("GoogleChrome");
+    expect(gc.repositories.length).toBeGreaterThanOrEqual(8);
+    expect(gc.repositories[0].name).toBe("puppeteer");
+    expect(gc.repositories[1].name).toBe("lighthouse");
+    expect(gc.repositories[2].name).toBe("workbox");
+    expect(gc.repositories[4].name).toBe("web-vitals");
+    expect(gc.standardsAlignment.coreWebVitals).toContain("W3C Long Animation Frames API (LoAF)");
+    expect(gc.standardsAlignment.automationCDP).toContain("Chrome DevTools Protocol (CDP)");
+    expect(gc.standardsAlignment.pwaServiceWorker).toContain("W3C Service Workers Level 2");
   });
 });

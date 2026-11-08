@@ -4,14 +4,16 @@ import type {
   MDNCompatSchema,
   TC39ProposalsSchema,
   MCPSchema2026,
-  GoogleStyleguide2026Schema
+  GoogleStyleguide2026Schema,
+  GoogleChromeReposSchema
 } from "./types.ts";
 import {
   validateWebAssembly,
   validateMDNCompat,
   validateTC39,
   validateMCP2026,
-  validateGoogleStyleguide2026
+  validateGoogleStyleguide2026,
+  validateGoogleChromeRepos
 } from "./validators.ts";
 
 export class StandardsLoader {
@@ -69,6 +71,12 @@ export class StandardsLoader {
   async loadGoogleStyleguide2026(): Promise<GoogleStyleguide2026Schema> {
     const data = await this.loadJson("google-styleguide", "google-styleguide-2026");
     if (!validateGoogleStyleguide2026(data)) throw new Error("Invalid Google Styleguide 2026 schema format");
+    return data;
+  }
+
+  async loadGoogleChromeRepos(): Promise<GoogleChromeReposSchema> {
+    const data = await this.loadJson("google-chrome", "google-chrome-repos");
+    if (!validateGoogleChromeRepos(data)) throw new Error("Invalid GoogleChrome Repositories schema format");
     return data;
   }
 }

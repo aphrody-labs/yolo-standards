@@ -120,3 +120,27 @@ export interface GoogleStyleguide2026Schema {
     rules: string[];
   };
 }
+
+export interface GoogleChromeReposSchema {
+  version: string;
+  organization: "GoogleChrome";
+  query: string;
+  updatedAt: string;
+  repositories: Array<{
+    name: string;
+    repoUrl: string;
+    rankByStars: number;
+    category: string;
+    primaryLanguage: string;
+    standards: string[];
+    roleInWebStandards?: string;
+  }>;
+  standardsAlignment: {
+    coreWebVitals: string[];
+    pwaServiceWorker: string[];
+    automationCDP: string[];
+    renderingCSS: string[];
+    securityIdentity: string[];
+  };
+}
+

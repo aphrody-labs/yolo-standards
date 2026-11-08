@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": [
+      "ESNext"
+    ],
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "bundler",
@@ -9,13 +11,22 @@
     "noEmit": true,
     "composite": true,
     "strict": true,
-    "downlevelIteration": true,
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": false,
-    "types": ["bun-types"]
+    "types": [
+      "@types/bun"
+    ]
   },
-  "include": ["src/**/*", "scripts/**/*", "tests/**/*"]
+  "include": [
+    "src/**/*",
+    "packages/create-yolo-app/src/**/*",
+    "scripts/**/*",
+    "tests/**/*"
+  ],
+  "exclude": [
+    "packages/create-yolo-app/templates/**/*"
+  ]
 }
