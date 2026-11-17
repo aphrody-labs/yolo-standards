@@ -16,7 +16,7 @@ export function renderApp(): string {
     </PageLayout>
   );
 
-  return "<!DOCTYPE html><html><head><meta charset=\"utf-8\"><title>YOLO Web</title></head><body style=\"margin:0\">" + content + "</body></html>";
+  return "<!DOCTYPE html><html lang="en" dir="ltr"><head><meta charset=\"utf-8\"><title>YOLO Web</title></head><body style=\"margin:0\">" + content + "</body></html>";
 }
 
 export function startWebServer(port = 3000): ReturnType<typeof Bun.serve> {
